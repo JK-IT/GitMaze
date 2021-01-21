@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: d951bec2c42178d4db5e780e32cb6e49
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Maze
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: c79470c6aae5d6346816a51dea712913, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
