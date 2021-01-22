@@ -5,28 +5,37 @@ using UnityEngine.UI;
 
 public class WaitingRoomScript : MonoBehaviour
 {
-    [SerializeField]
-    private Button sampleButt;
-   
-    [SerializeField]
-    private List<HeroTemplate> heroList; 
 
-    Sprite charimg1, charimg2, charimg3;
+    [SerializeField]
+    private List<HeroTemplate> heroList;
+    [SerializeField]
+    private Button button;
+
     void Start()
-    {
-        heroList = new List<HeroTemplate>();
-        
-        
-        
-        
-
+    { 
+        if(heroList.Count > 0)
+        {
+            foreach (HeroTemplate hero in heroList)
+            {
+                SpawnHeroImg(hero);
+            }
+        }
     }
 
+    private void SpawnHeroImg(HeroTemplate inhero)
+    {
+         Button b = Instantiate<Button>(button, transform);
+         b.image.sprite = inhero.HeroSprite;
+    }
     // Update is called once per frame
     void Update()
     {
         
     }
 
+    public void RegisterImages()
+    {
+        Debug.Log("lick");
+    }
 
 }

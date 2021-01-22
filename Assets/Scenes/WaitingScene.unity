@@ -205,8 +205,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 762552565}
   m_HandleRect: {fileID: 762552564}
   m_Direction: 0
-  m_Value: -0.032051284
-  m_Size: 0.99998766
+  m_Value: 115311.77
+  m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1177,8 +1177,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 627, y: -395}
-  m_SizeDelta: {x: 299.4268, y: 116.0292}
+  m_AnchoredPosition: {x: 606.2849, y: -366.51675}
+  m_SizeDelta: {x: 340.857, y: 172.9957}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1870457588
 MonoBehaviour:
@@ -1201,7 +1201,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.52959925, g: 0.9622642, b: 0.54855025, a: 1}
+    m_NormalColor: {r: 0.0036621876, g: 0.4621816, b: 0.8584906, a: 1}
     m_HighlightedColor: {r: 0.2547578, g: 0.764151, b: 0.42146826, a: 1}
     m_PressedColor: {r: 0.13501552, g: 0.6132076, b: 0.2915147, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1436,10 +1436,10 @@ RectTransform:
   m_Father: {fileID: 1771258722}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -384.99496, y: 0.000021744583}
-  m_SizeDelta: {x: 770, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -591.198, y: 0.000021744583}
+  m_SizeDelta: {x: 961.61, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2065395382
 MonoBehaviour:
@@ -1461,7 +1461,7 @@ MonoBehaviour:
   m_ChildAlignment: 1
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 200, y: 200}
+  m_CellSize: {x: 300, y: 300}
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 1
   m_ConstraintCount: 3
@@ -1491,8 +1491,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 183612bd88144234eb6f0d3e00d6b11c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sampleButt: {fileID: 0}
-  heroList: []
+  heroList:
+  - {fileID: 11400000, guid: b6c1b6bd1c596d14297b69e5c41e77e0, type: 2}
+  - {fileID: 11400000, guid: def303e88a914f24eb9f2fc471ed7694, type: 2}
+  - {fileID: 11400000, guid: d298d1ebe36b68049bb7128ac888cbae, type: 2}
+  - {fileID: 11400000, guid: 467a4e0ec7327d141a12d6f632338ddc, type: 2}
+  - {fileID: 11400000, guid: ae166c8b5b66d4c4da60217c165e5f75, type: 2}
+  - {fileID: 11400000, guid: 11a8336d8a02f71468ee875a2e13b7b7, type: 2}
+  - {fileID: 11400000, guid: a8e17c20aa1f6a0459f4a9a6a1f4a8f3, type: 2}
+  - {fileID: 11400000, guid: a35f2299235ef9c44bc7c9636e8b7fd6, type: 2}
+  button: {fileID: 975448569640141214, guid: e435873e87f605e49906a48ee074e5a4, type: 3}
 --- !u!1 &2095340671
 GameObject:
   m_ObjectHideFlags: 0
@@ -1531,8 +1539,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -321.4328, y: -88.815}
-  m_SizeDelta: {x: 810.406, y: 496.34}
+  m_AnchoredPosition: {x: -225.62561, y: -146.83}
+  m_SizeDelta: {x: 1002.0204, y: 612.37}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2095340673
 MonoBehaviour:
@@ -1553,7 +1561,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 5
+  m_ScrollSensitivity: 10
   m_Viewport: {fileID: 1771258722}
   m_HorizontalScrollbar: {fileID: 150434370}
   m_VerticalScrollbar: {fileID: 1644414917}
