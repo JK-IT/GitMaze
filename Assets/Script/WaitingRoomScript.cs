@@ -26,6 +26,7 @@ public class WaitingRoomScript : MonoBehaviour
     {
          Button b = Instantiate<Button>(button, transform);
          b.image.sprite = inhero.HeroSprite;
+         b.onClick.AddListener( RegisterImages);
     }
     // Update is called once per frame
     void Update()
@@ -35,7 +36,10 @@ public class WaitingRoomScript : MonoBehaviour
 
     public void RegisterImages()
     {
-        Debug.Log("lick");
+        Debug.Log(this.name + " : button click");
+        PlayerData pd = Resources.FindObjectsOfTypeAll<PlayerData>()[0];
+        pd.kname = "keristy";
+        Debug.Log(pd.kname);
     }
 
 }
