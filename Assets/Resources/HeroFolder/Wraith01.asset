@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5f67465567fa724aa6a1e2c07cd9904, type: 3}
-  m_Name: Wraith001
+  m_Name: Wraith01
   m_EditorClassIdentifier: 
-  name: Wraith001
+  name: 
   HeroSprite: {fileID: 21300000, guid: edea31b0f63ac5c44b7bf73080314d20, type: 3}
+  goo: {fileID: 4608659491007411667, guid: 1fa9835f9dbc979489e553789dfb5bca, type: 3}

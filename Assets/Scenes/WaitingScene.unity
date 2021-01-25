@@ -1170,7 +1170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7234ce4d716abd94eb5602678516ad6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pd: {fileID: 11400000, guid: 59e3eb00d642cd948812371f19e632a8, type: 2}
+  playerData: {fileID: 11400000, guid: 7b033019c9c3ef0478d58b94e477b136, type: 2}
 --- !u!4 &1868509002
 Transform:
   m_ObjectHideFlags: 0
@@ -1548,7 +1548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heroList:
-  - {fileID: 11400000, guid: b6c1b6bd1c596d14297b69e5c41e77e0, type: 2}
+  - {fileID: 0}
   - {fileID: 11400000, guid: def303e88a914f24eb9f2fc471ed7694, type: 2}
   - {fileID: 11400000, guid: d298d1ebe36b68049bb7128ac888cbae, type: 2}
   - {fileID: 11400000, guid: 467a4e0ec7327d141a12d6f632338ddc, type: 2}

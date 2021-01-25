@@ -3,6 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * A custom class that will behave as storage and singleton 
+ * Which will give you consistent information across the game
+ */
 public abstract class SingleObjectablePattern<T> : ScriptableObject where T : ScriptableObject
 {
     static T _ins = null;

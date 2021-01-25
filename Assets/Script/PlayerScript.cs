@@ -28,9 +28,12 @@ public class PlayerScript : MonoBehaviour
 
 
     private SpriteRenderer spr;
+    PlayerData playerinfo;
 
     private void Awake()
     {
+        playerinfo = Resources.FindObjectsOfTypeAll<PlayerData>()[0];
+        Debug.Log(gameObject.name + " " + playerinfo.name);
     }
 
 
@@ -51,25 +54,12 @@ public class PlayerScript : MonoBehaviour
         }
 
         spr = this.GetComponentInParent<SpriteRenderer>();
-        Debug.Log(spr);
 
         // SET UP SPRITE
-        if(PlayerPrefs.HasKey("charSprite"))
-        {
-            //gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Assets / Resources / Sprites / pinkman.prefab");
-        } else
-        {
-            
-        }
-
-        var nsp = Resources.Load<Sprite>("Images/Pinkman");
-        Debug.Log(nsp);
-        spr.sprite = nsp;
-
+        spr.sprite = playerinfo.hero.HeroSprite;
 
         body = gameObject.GetComponent<Rigidbody2D>();
         coll = gameObject.GetComponent<BoxCollider2D>();
-        //manAnimator = gameObject.GetComponent<Animator>();
     }
 
     private void Fire(InputAction.CallbackContext ctx)
@@ -127,7 +117,6 @@ public class PlayerScript : MonoBehaviour
     private void MoveChar()
     {
         body.velocity = movDir * movSpeed;
-        
     }
 
     // Update is called once per frame

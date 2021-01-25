@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public PlayerData pd;
+    public PlayerData playerData;
     public static GameManager gmIns
     {
         get; private set;
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("awake");
+        playerData = Resources.FindObjectsOfTypeAll<PlayerData>()[0];
         Logpd();
     }
 
@@ -42,6 +42,6 @@ public class GameManager : MonoBehaviour
 
     public void Logpd()
     {
-        Debug.Log(pd.kname);
+        Debug.Log(gameObject.name + " " + playerData.name);
     }
 }

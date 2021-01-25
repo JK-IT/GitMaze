@@ -15,18 +15,21 @@ public class WaitingRoomScript : MonoBehaviour
     { 
         if(heroList.Count > 0)
         {
-            foreach (HeroTemplate hero in heroList)
-            {
-                SpawnHeroImg(hero);
+            for(int i = 0; i < heroList.Count; i++)
+            {   
+                SpawnHeroImg(heroList[i], i);
             }
         }
     }
-
-    private void SpawnHeroImg(HeroTemplate inhero)
+    /*
+     * @inher : HeroTemplate
+     * @j: the order in hero list
+     * */
+    private void SpawnHeroImg(HeroTemplate inhero, int j)
     {
-         Button b = Instantiate<Button>(button, transform);
-         b.image.sprite = inhero.HeroSprite;
-         b.onClick.AddListener( RegisterImages);
+        Button b = Instantiate<Button>(button, transform);
+        b.image.sprite = inhero.HeroSprite;
+        b.onClick.AddListener(() => RegisterHero(j));
     }
     // Update is called once per frame
     void Update()
@@ -34,12 +37,15 @@ public class WaitingRoomScript : MonoBehaviour
         
     }
 
-    public void RegisterImages()
+    /*
+     *  This function will register the name and hero template to PlayerData: SingleScriptablePattern
+     */
+    public void RegisterHero(int num)
     {
         Debug.Log(this.name + " : button click");
         PlayerData pd = Resources.FindObjectsOfTypeAll<PlayerData>()[0];
-        pd.kname = "keristy";
-        Debug.Log(pd.kname);
+        pd.name = heroList[num].name;
+        pd.hero = heroList[num];
     }
 
 }
