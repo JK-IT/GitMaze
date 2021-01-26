@@ -11,5 +11,5 @@ using UnityEngine;
 public class PlayerData : SingleObjectablePattern<PlayerData>
 {
     public new string name = "kyle";
-    public HeroTemplate hero;
+    public GameObject heroGameobjet;
 }

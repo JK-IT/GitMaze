@@ -26,8 +26,6 @@ public class PlayerScript : MonoBehaviour
 
     public List<GameObject> itemlist = new List<GameObject>();
 
-
-    private SpriteRenderer spr;
     PlayerData playerinfo;
 
     private void Awake()
@@ -52,14 +50,6 @@ public class PlayerScript : MonoBehaviour
 
             playerActionMap.actionTriggered += contex => MyInputChangedHandle(contex);
         }
-
-        spr = this.GetComponentInParent<SpriteRenderer>();
-
-        // SET UP SPRITE
-        spr.sprite = playerinfo.hero.HeroSprite;
-
-        body = gameObject.GetComponent<Rigidbody2D>();
-        coll = gameObject.GetComponent<BoxCollider2D>();
     }
 
     private void Fire(InputAction.CallbackContext ctx)

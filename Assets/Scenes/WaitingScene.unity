@@ -1547,15 +1547,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 183612bd88144234eb6f0d3e00d6b11c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heroList:
-  - {fileID: 0}
-  - {fileID: 11400000, guid: def303e88a914f24eb9f2fc471ed7694, type: 2}
-  - {fileID: 11400000, guid: d298d1ebe36b68049bb7128ac888cbae, type: 2}
-  - {fileID: 11400000, guid: 467a4e0ec7327d141a12d6f632338ddc, type: 2}
-  - {fileID: 11400000, guid: ae166c8b5b66d4c4da60217c165e5f75, type: 2}
-  - {fileID: 11400000, guid: 11a8336d8a02f71468ee875a2e13b7b7, type: 2}
-  - {fileID: 11400000, guid: a8e17c20aa1f6a0459f4a9a6a1f4a8f3, type: 2}
-  - {fileID: 11400000, guid: a35f2299235ef9c44bc7c9636e8b7fd6, type: 2}
+  heroGameObjList:
+  - {fileID: 7661980550557954869, guid: 3657c9567c4bdc34c8ee76ef6afc0161, type: 3}
+  - {fileID: 7391659842961473095, guid: 58f2d0ef5c2227f479a2b1d567076d37, type: 3}
+  - {fileID: 3454383748866275771, guid: ce660b1f125d6a24d9c0d3d1dc9e947f, type: 3}
   button: {fileID: 7874188237195087264, guid: e435873e87f605e49906a48ee074e5a4, type: 3}
 --- !u!1 &2095340671
 GameObject:

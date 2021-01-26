@@ -5,19 +5,18 @@ using UnityEngine.UI;
 
 public class WaitingRoomScript : MonoBehaviour
 {
-
     [SerializeField]
-    private List<HeroTemplate> heroList;
+    private List<GameObject> heroGameObjList;
     [SerializeField]
     private Button button;
 
     void Start()
     { 
-        if(heroList.Count > 0)
+        if(heroGameObjList.Count > 0)
         {
-            for(int i = 0; i < heroList.Count; i++)
+            for(int i = 0; i < heroGameObjList.Count; i++)
             {   
-                SpawnHeroImg(heroList[i], i);
+                SpawnHeroImg(heroGameObjList[i], i);
             }
         }
     }
@@ -25,10 +24,10 @@ public class WaitingRoomScript : MonoBehaviour
      * @inher : HeroTemplate
      * @j: the order in hero list
      * */
-    private void SpawnHeroImg(HeroTemplate inhero, int j)
+    private void SpawnHeroImg(GameObject inhero, int j)
     {
         Button b = Instantiate<Button>(button, transform);
-        b.image.sprite = inhero.HeroSprite;
+        b.image.sprite =  inhero.GetComponent<SpriteRenderer>().sprite; //inhero.HeroSprite;
         b.onClick.AddListener(() => RegisterHero(j));
     }
     // Update is called once per frame
@@ -44,8 +43,8 @@ public class WaitingRoomScript : MonoBehaviour
     {
         Debug.Log(this.name + " : button click");
         PlayerData pd = Resources.FindObjectsOfTypeAll<PlayerData>()[0];
-        pd.name = heroList[num].name;
-        pd.hero = heroList[num];
+        pd.name = heroGameObjList[num].name;
+        pd.heroGameobjet = heroGameObjList[num];
     }
 
 }

@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class FollowScript : MonoBehaviour
 {
-
-    public Transform playerTransform;
+    GameObject player;
     private float speed = 8f;
     private Vector2 offset = new Vector2(1, 0);
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.Find("Player");    
     }
 
     // Update is called once per frame
@@ -21,7 +22,7 @@ public class FollowScript : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        Vector3 endpos = playerTransform.position;
+        Vector3 endpos = player.transform.position;
         endpos.x += offset.x;
         endpos.y += offset.y;
         endpos.z = -8;
@@ -30,6 +31,6 @@ public class FollowScript : MonoBehaviour
         Vector3 smoopos = Vector3.Lerp(transform.position, endpos, speed * Time.fixedDeltaTime);
         transform.position = smoopos;
 
-        transform.LookAt(playerTransform, Vector3.up);
+        transform.LookAt(player.transform, Vector3.up);
     }
 }
