@@ -22,16 +22,12 @@ public class PlayerScript : MonoBehaviour
 
     private float health = 200f;
 
-    private Animator manAnimator;
-
     public List<GameObject> itemlist = new List<GameObject>();
 
-    PlayerData playerinfo;
 
     private void Awake()
     {
-        playerinfo = Resources.FindObjectsOfTypeAll<PlayerData>()[0];
-        Debug.Log(gameObject.name + " " + playerinfo.name);
+        
     }
 
 
@@ -49,6 +45,8 @@ public class PlayerScript : MonoBehaviour
             attkAction.canceled += ctx => Fire(ctx);
 
             playerActionMap.actionTriggered += contex => MyInputChangedHandle(contex);
+
+            body = gameObject.GetComponent<Rigidbody2D>();
         }
     }
 

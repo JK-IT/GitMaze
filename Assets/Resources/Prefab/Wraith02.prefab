@@ -57,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7661980550557954869, guid: 3657c9567c4bdc34c8ee76ef6afc0161, type: 3}
       propertyPath: m_Name
-      value: Wraith02Go
+      value: Wraith02
       objectReference: {fileID: 0}
     - target: {fileID: 7661980550557954870, guid: 3657c9567c4bdc34c8ee76ef6afc0161, type: 3}
       propertyPath: m_Controller

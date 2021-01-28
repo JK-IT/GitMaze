@@ -57,11 +57,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7661980550557954869, guid: 3657c9567c4bdc34c8ee76ef6afc0161, type: 3}
       propertyPath: m_Name
-      value: Wraith03Go
+      value: Wraith03
       objectReference: {fileID: 0}
     - target: {fileID: 7661980550557954870, guid: 3657c9567c4bdc34c8ee76ef6afc0161, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: e9ce68137523ea24a8e1ee69ae9eadde, type: 2}
+      objectReference: {fileID: 9100000, guid: f69f4d75deeb7e849b6c4a73f3bb5ea4, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3657c9567c4bdc34c8ee76ef6afc0161, type: 3}
