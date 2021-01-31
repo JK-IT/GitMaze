@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class FollowScript : MonoBehaviour
 {
-    public GameObject target;
+    private static GameObject target;
     private float speed = 8f;
     private Vector2 offset = new Vector2(1, 0);
 
-
+    private void Awake()
+    {
+        //Debug.Log("Camera created");
+    }
     // Start is called before the first frame update
     void Start()
     {
-        target = GameObject.Find("SpawnSpot");   
+        target = GameObject.Find("Player");   
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!target)
-        {
-            target = GameObject.Find("SpawnSpot");
-        }
+        LookatTarget();
     }
     private void FixedUpdate()
     {
@@ -37,9 +37,14 @@ public class FollowScript : MonoBehaviour
         transform.LookAt(target.transform, Vector3.up);
     }
 
-    public void SetTarget(GameObject intar)
+    public void LookatTarget()
     {
-        Debug.Log("Setting target");
-        target = intar;
+        if(!GameObject.Find("Player"))
+        {
+            target = GameObject.Find("SpawnSpot");
+        } else
+        {
+            target = GameObject.Find("Player");
+        }
     }
 }

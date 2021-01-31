@@ -29,7 +29,9 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        playerData = Resources.FindObjectsOfTypeAll<PlayerData>()[0];
+        var ar = Resources.FindObjectsOfTypeAll<PlayerData>();
+        Debug.Log(ar.Length);
+        playerData = ar[0];
         Logpd();
     }
 
@@ -43,5 +45,9 @@ public class GameManager : MonoBehaviour
     public void Logpd()
     {
         Debug.Log(gameObject.name + " " + playerData.name);
+    }
+    public PlayerData GetpInfo()
+    {
+        return playerData;
     }
 }

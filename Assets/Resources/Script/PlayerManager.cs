@@ -5,28 +5,30 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     public Transform spawnSpot;
-    public FollowScript foScript;
 
     private PlayerData pInfo;
+    private GameManager gameManager;
+    private GameObject player;
     private void Awake()
     {
-        pInfo = Resources.FindObjectsOfTypeAll<PlayerData>()[0];
-        //how u call method from other script
-        foScript = GameObject.FindObjectOfType<FollowScript>();
-        Debug.Log(foScript);
+        gameManager = GameObject.FindObjectOfType<GameManager>();
+        pInfo = gameManager.GetpInfo();
+        Debug.Log(this.name + " " + pInfo);
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        //Debug.Log(mainCam.name);
         if (!pInfo)
         {
             Debug.LogError(this.name +  " Cannot find play info object");
+            return;
         }
 
-        GameObject player = Instantiate(pInfo.heroGameobjet, spawnSpot.transform.position, spawnSpot.transform.rotation) as GameObject;
+        player = Instantiate(pInfo.heroGameobjet, spawnSpot.transform.position, spawnSpot.transform.rotation) as GameObject;
+        player.SetActive(true);
         player.name = "Player";
-        foScript.SetTarget(player);
     }
 
     // Update is called once per frame
