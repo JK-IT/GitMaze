@@ -122,9 +122,9 @@ public class PlayerScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        float p = collision.gameObject.GetComponent<DamgePoints>().GetDamPoint();
+        //float p = collision.gameObject.GetComponent<DamgePoints>().GetDamPoint();
         Destroy(collision.gameObject);
-        health -= p;
+        //health -= p;
         if (health <= 0f)
         {
             playerActionMap.Disable();

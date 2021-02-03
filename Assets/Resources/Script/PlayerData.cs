@@ -11,6 +11,8 @@ using UnityEngine.InputSystem;
 [CreateAssetMenu(fileName ="player data" , menuName ="PlayerData")]
 public class PlayerData : SingleObjectablePattern<PlayerData>
 {
-    public new string name = "kyle";
+    public string username = "kyle";
+    public string email = "";
     public GameObject heroGameobjet;
+
 }

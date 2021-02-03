@@ -36,9 +36,9 @@ public class dumbscript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        float p = collision.GetComponent<DamgePoints>().GetDamPoint();
+        //float p = collision.GetComponent<DamgePoints>().GetDamPoint();
         Destroy(collision.gameObject);
-        health -= p;
+       // health -= p;
 
         if(health <= 0)
         {

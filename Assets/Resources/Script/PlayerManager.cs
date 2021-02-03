@@ -7,11 +7,11 @@ public class PlayerManager : MonoBehaviour
     public Transform spawnSpot;
 
     private PlayerData pInfo;
-    private GameManager gameManager;
+    private KgameMan gameManager;
     private GameObject player;
     private void Awake()
     {
-        gameManager = GameObject.FindObjectOfType<GameManager>();
+        gameManager = GameObject.FindObjectOfType<KgameMan>();
         pInfo = gameManager.GetpInfo();
         Debug.Log(this.name + " " + pInfo);
     }

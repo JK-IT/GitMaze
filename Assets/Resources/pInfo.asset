@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a01672a2637ce5f44a07ec55af68e9b9, type: 3}
-  m_Name: PlayerInfo
+  m_Name: pInfo
   m_EditorClassIdentifier: 
   name: kyle
-  heroGameobjet: {fileID: 7661980550557954869, guid: 3657c9567c4bdc34c8ee76ef6afc0161, type: 3}
+  heroGameobjet: {fileID: 0}
