@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a01672a2637ce5f44a07ec55af68e9b9, type: 3}
   m_Name: pInfo
   m_EditorClassIdentifier: 
-  name: kyle
+  username: username
+  email: 
   heroGameobjet: {fileID: 0}

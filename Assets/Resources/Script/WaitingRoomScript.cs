@@ -42,9 +42,11 @@ public class WaitingRoomScript : MonoBehaviour
     public void RegisterHero(int num)
     {
         Debug.Log(this.name + " : button click");
-        PlayerData pd = Resources.FindObjectsOfTypeAll<PlayerData>()[0];
+        /*
+        PlayerDatar pd = Resources.FindObjectsOfTypeAll<PlayerData>()[0];
         pd.name = heroGameObjList[num].name;
         pd.heroGameobjet = heroGameObjList[num];
+        */
     }
 
 }

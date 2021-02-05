@@ -8,10 +8,10 @@ using UnityEngine.InputSystem;
  */
 
 
-[CreateAssetMenu(fileName ="player data" , menuName ="PlayerData")]
-public class PlayerData : SingleObjectablePattern<PlayerData>
+[CreateAssetMenu(fileName ="player data" , menuName ="PlayerDataRuntime")]
+public class PlayerDataRuntime : SingleObjectablePattern<PlayerDataRuntime>
 {
-    public string username = "kyle";
+    public string username = "username";
     public string email = "";
     public GameObject heroGameobjet;
 
