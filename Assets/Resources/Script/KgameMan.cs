@@ -5,16 +5,22 @@ using UnityEngine.SceneManagement;
 using UnityEditor;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-
+using System.Threading;
 
 
 public class KgameMan : MonoBehaviour
 {
-    public PlayerDataRuntime pInfoRuntime;
-    private LocalGameData localdat = new LocalGameData();
-    public static KgameMan gmIns
+    private LocalGameData localdat = null;
+
+    string savedpath;
+
+    private Thread bgthread;
+
+    private static KgameMan _ins;
+
+    public static KgameMan Intance
     {
-        get; private set;
+        get { return _ins; } private set { }
     }
 
     protected KgameMan() { }
@@ -22,34 +28,46 @@ public class KgameMan : MonoBehaviour
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     static void GmInit()
     {
-        Debug.Log("gm init");
-        var ins = FindObjectOfType<KgameMan>();
-
-        if (ins == null)
-        {
-            ins = new GameObject("Game Manager").AddComponent<KgameMan>();
-        }
-        DontDestroyOnLoad(ins);
-        gmIns = ins;
+        Debug.Log("gm init " + Time.time);
     }
 
     private void Awake()
     {
-        LoadpDataRuntime();
-        if(PlayerPrefs.GetString("playername") == "")
+        if(_ins != null && _ins != this)
         {
-            //LoadDat();
-            Debug.Log(PlayerPrefs.GetString("playername"));
+            Destroy(this.gameObject);
+        } else
+        {
+            _ins = this;
+            DontDestroyOnLoad(_ins);
         }
+
+        Debug.Log("Awake is called " + Time.time);
+
+        savedpath = Path.Combine(Application.dataPath, "Resources/kgame.kd");
+        bgthread = new Thread(StartupLoad);
+        bgthread.Start();
+        //LoadpDataRuntime();
 
     }
 
     private void Update()
     {
-       // Debug.Log(localdat.pname);
+        // Debug.Log(localdat.pname);
     }
 
+    private void OnApplicationPause(bool pause)
+    {
+        
+    }
 
+    private void OnApplicationQuit()
+    {
+        bgthread.Abort();
+        SaveDat();
+    }
+
+    
     public void NextScene()
     {
         int csi = SceneManager.GetActiveScene().buildIndex;
@@ -58,57 +76,90 @@ public class KgameMan : MonoBehaviour
 
     public void GuestSignin()
     {
-        if (PlayerPrefs.GetString("playername") == "")
-            SceneManager.LoadScene("NameRegisterScene");
-        else
+        if (bgthread.IsAlive)
+        {
+            bgthread.Join();
+        }
+        if(localdat.pname != "")
+        {
             SceneManager.LoadScene("WaitingScene");
+            return;
+        }
+        SceneManager.LoadScene("NameRegisterScene");
+       
     }
-    public void Logpd()
-    {
-        Debug.Log(gameObject.name + " " + pInfoRuntime.name);
-    }
-    public PlayerDataRuntime GetpRuntimeInfo()
-    {
-        return pInfoRuntime;
-    }
+
 
     // look for p data at runtime and create one if not exist
-    public void LoadpDataRuntime()
+    public void LoadPresetConf()
     {
-        pInfoRuntime = (PlayerDataRuntime)AssetDatabase.LoadAssetAtPath("Assets/Resources/pInfo.asset", typeof(PlayerDataRuntime));
-        if(!pInfoRuntime)
-        {
-            pInfoRuntime = PlayerDataRuntime.Instance;
-            AssetDatabase.CreateAsset(pInfoRuntime, "Assets/Resources/pInfo.asset");
-        }
+        
     }
 
-    public void SetpName(string inname)
+    public void SetpName()
     {
-        PlayerPrefs.SetString("playername", inname);
-        pInfoRuntime.username = inname;
-        localdat.pname = inname;
-        
+        //pInfoRuntime.username = PlayerPrefs.GetString("playername");
+        localdat.pname = PlayerPrefs.GetString("playername");
+        if (bgthread.IsAlive)
+        {
+            bgthread.Abort();
+        }
+        //bgthread = new Thread(SaveDat);
+        //bgthread.Start();
     }
 
     // serialize file data
     public void SaveDat()
     {
+        /* using binary to save data
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "kgame.kd");
         bf.Serialize(file, localdat);
         file.Close();
+        */
+
+        /* using json to save data */
+        Debug.Log("Kgameman Saving data file')");
+        File.WriteAllText(savedpath, JsonUtility.ToJson(localdat));
+        Debug.Log("Kgameman DONE Saving data file')");
     }
 
     private void LoadDat()
     {
+        /* load data with binary
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Open(Application.persistentDataPath + "kgame.kd", FileMode.Open);
         //StreamReader sr = new StreamReader(file);
         //string filecontent = sr.ReadToEnd();
         localdat = (LocalGameData)bf.Deserialize(file);
         file.Close();
+        */
+
+        // load data as json file
+        Debug.Log("Kgameman Loading data file");
+        if (File.Exists(savedpath))
+        {
+            localdat = JsonUtility.FromJson<LocalGameData>(File.ReadAllText(savedpath));
+        }
+        else
+            localdat = null;
+
+        Debug.Log("Kgameman DONE Loading data file");
     }
 
+    private void StartupLoad()
+    {
+        if (!File.Exists(savedpath))
+        {
+            Debug.Log("Creating saved file ");
+            localdat = new LocalGameData();
+            File.WriteAllText(savedpath, JsonUtility.ToJson(localdat));
+            Debug.Log("Done Creating saved file ");
+        } else
+        {
+            Debug.Log("Saved File already exists");
+            localdat = JsonUtility.FromJson<LocalGameData>(File.ReadAllText(savedpath));
+        }
+    }
 
 }

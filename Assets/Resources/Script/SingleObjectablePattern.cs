@@ -6,6 +6,9 @@ using UnityEngine;
 /*
  * A custom class that will behave as storage and singleton 
  * Which will give you consistent information across the game
+ * SCRIPTABLE OBJECT ONLY GOOD FOR SAVING DEFAULT VALUE FROM DEVELOPMENT , BEFORE THE BUILD
+ * IT IS NOT GOOD TO SAVE CHANGES DURING RUNTIME, CUZ WHEN GAME RESTART THE CHANGES MADE TO THME
+ * WILL BE LOST
  */
 public abstract class SingleObjectablePattern<T> : ScriptableObject where T : ScriptableObject
 {

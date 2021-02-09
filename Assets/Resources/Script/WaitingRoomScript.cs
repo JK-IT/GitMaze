@@ -28,6 +28,7 @@ public class WaitingRoomScript : MonoBehaviour
     {
         Button b = Instantiate<Button>(button, transform);
         b.image.sprite =  inhero.GetComponent<SpriteRenderer>().sprite; //inhero.HeroSprite;
+        b.name = inhero.name;
         b.onClick.AddListener(() => RegisterHero(j));
     }
     // Update is called once per frame
@@ -47,6 +48,7 @@ public class WaitingRoomScript : MonoBehaviour
         pd.name = heroGameObjList[num].name;
         pd.heroGameobjet = heroGameObjList[num];
         */
+
     }
 
 }
