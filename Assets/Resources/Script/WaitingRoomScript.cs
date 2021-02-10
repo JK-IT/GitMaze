@@ -9,6 +9,13 @@ public class WaitingRoomScript : MonoBehaviour
     private List<GameObject> heroGameObjList;
     [SerializeField]
     private Button button;
+    private KgameMan gaman;
+
+
+    void Awake()
+    {
+        gaman = GameObject.FindObjectOfType<KgameMan>();
+    }
 
     void Start()
     { 
@@ -29,7 +36,7 @@ public class WaitingRoomScript : MonoBehaviour
         Button b = Instantiate<Button>(button, transform);
         b.image.sprite =  inhero.GetComponent<SpriteRenderer>().sprite; //inhero.HeroSprite;
         b.name = inhero.name;
-        b.onClick.AddListener(() => RegisterHero(j));
+        b.onClick.AddListener(() => RegisterHero(b.name));
     }
     // Update is called once per frame
     void Update()
@@ -40,15 +47,15 @@ public class WaitingRoomScript : MonoBehaviour
     /*
      *  This function will register the name and hero template to PlayerData: SingleScriptablePattern
      */
-    public void RegisterHero(int num)
+    public void RegisterHero(string charname)
     {
         Debug.Log(this.name + " : button click");
-        /*
-        PlayerDatar pd = Resources.FindObjectsOfTypeAll<PlayerData>()[0];
-        pd.name = heroGameObjList[num].name;
-        pd.heroGameobjet = heroGameObjList[num];
-        */
+        PlayerPrefs.SetString("heroChoice", charname); //this will be used to load from array or resources
+    }
 
+    public void StartGame()
+    {
+        gaman.NextScene();
     }
 
 }

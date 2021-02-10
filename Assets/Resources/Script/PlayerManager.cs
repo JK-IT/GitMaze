@@ -11,6 +11,11 @@ public class PlayerManager : MonoBehaviour
     private void Awake()
     {
         gameManager = GameObject.FindObjectOfType<KgameMan>();
+        Debug.Log(gameManager.GetDic().Count);
+        player =  gameManager.GetDic()[PlayerPrefs.GetString("heroChoice")];
+        player.name = "Player";
+        player.transform.position = spawnSpot.transform.position;
+        player.SetActive(true);
     }
 
     // Start is called before the first frame update

@@ -1226,9 +1226,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: NextScene
+      - m_Target: {fileID: 2065395384}
+        m_TargetAssemblyTypeName: WaitingRoomScript, Assembly-CSharp
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1509,7 +1509,7 @@ MonoBehaviour:
   - {fileID: 7661980550557954869, guid: 3657c9567c4bdc34c8ee76ef6afc0161, type: 3}
   - {fileID: 7391659842961473095, guid: 58f2d0ef5c2227f479a2b1d567076d37, type: 3}
   - {fileID: 3454383748866275771, guid: ce660b1f125d6a24d9c0d3d1dc9e947f, type: 3}
-  button: {fileID: 7874188237195087264, guid: e435873e87f605e49906a48ee074e5a4, type: 3}
+  button: {fileID: 7398217558389321141, guid: e435873e87f605e49906a48ee074e5a4, type: 3}
 --- !u!1 &2095340671
 GameObject:
   m_ObjectHideFlags: 0

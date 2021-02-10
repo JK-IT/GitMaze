@@ -8,10 +8,21 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading;
 
 
+
+
+/*========  NOTE::
+ * RESOURCES.LOAD() DONT INCLUDE THE FILE EXTENSION IN THE STRING PATH
+ * 
+ * SCRIPTABLEOBJECT ONLY GOOD FOR PRESET VALUE, CAN'T USE TO SAVE DATA
+ * 
+ * 
+ * 
+ */
+
 public class KgameMan : MonoBehaviour
 {
     private LocalGameData localdat = null;
-
+    static Dictionary<string, GameObject> charpool = new Dictionary<string, GameObject>();
     string savedpath;
 
     private Thread bgthread;
@@ -29,6 +40,21 @@ public class KgameMan : MonoBehaviour
     static void GmInit()
     {
         Debug.Log("gm init " + Time.time);
+        //initialize the pool
+        System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(Application.dataPath + "/Resources/HeroPrefab/");
+        List<string> flist = new List<string>();
+        foreach (var fdi in dir.GetFiles())
+        {
+            if (fdi.Name.Contains(".meta")) { continue; }
+            string cname = Path.GetFileNameWithoutExtension(fdi.FullName);
+            flist.Add(cname);
+            GameObject charac = Instantiate( Resources.Load<GameObject>("HeroPrefab/" + cname)) as GameObject;
+            charac.SetActive(false);
+            DontDestroyOnLoad(charac);
+            charpool.Add(cname, charac);
+        }
+        
+        
     }
 
     private void Awake()
@@ -43,7 +69,7 @@ public class KgameMan : MonoBehaviour
         }
 
         Debug.Log("Awake is called " + Time.time);
-
+        Debug.Log(charpool["Wraith01"]);
         savedpath = Path.Combine(Application.dataPath, "Resources/kgame.kd");
         bgthread = new Thread(StartupLoad);
         bgthread.Start();
@@ -54,6 +80,7 @@ public class KgameMan : MonoBehaviour
     private void Update()
     {
         // Debug.Log(localdat.pname);
+        
     }
 
     private void OnApplicationPause(bool pause)
@@ -162,4 +189,8 @@ public class KgameMan : MonoBehaviour
         }
     }
 
+    public Dictionary<string, GameObject> GetDic()
+    {
+        return charpool;
+    }
 }
