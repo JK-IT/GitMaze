@@ -16,18 +16,17 @@ public class PlayerScript : MonoBehaviour
     private Rigidbody2D body;
     private BoxCollider2D coll;
 
-    public GameObject inWeapon;
-
     bool isFiring = false;
 
     private float health = 200f;
 
     public List<GameObject> itemlist = new List<GameObject>();
 
+    private string weapontag;
 
     private void Awake()
     {
-        
+        weapontag = "bullet";
     }
 
 
@@ -47,6 +46,7 @@ public class PlayerScript : MonoBehaviour
             playerActionMap.actionTriggered += contex => MyInputChangedHandle(contex);
 
             body = gameObject.GetComponent<Rigidbody2D>();
+            coll = gameObject.GetComponent<BoxCollider2D>();
         }
     }
 
@@ -67,21 +67,21 @@ public class PlayerScript : MonoBehaviour
     IEnumerator fireCou()
     {
 
-        if(inWeapon != null)
+        for (int i = 0; i < 2; i++)
         {
-            for(int i = 0; i < 2; i++)
-            {
-                Vector2 bullpos = new Vector2(gameObject.transform.position.x + (gameObject.transform.localScale.x * coll.bounds.size.x), gameObject.transform.position.y);
-                GameObject bull = Instantiate(inWeapon, bullpos, Quaternion.identity) as GameObject;
-                bull.transform.localScale = gameObject.transform.localScale;
-                bull.GetComponent<Rigidbody2D>().velocity = new Vector2(4f * gameObject.transform.localScale.x, 0);
-                yield return new WaitForSeconds(.3f);
-            }
-            isFiring = false;
+            Vector2 bullpos = new Vector2(gameObject.transform.position.x + (gameObject.transform.localScale.x * coll.bounds.size.x), gameObject.transform.position.y);
+            
+            //GameObject bull = Instantiate(inWeapon, bullpos, Quaternion.identity) as GameObject;
+            GameObject bull = ObjectsPool.GetObject(weapontag);
+            bull.transform.position = bullpos;
+            bull.transform.localScale = gameObject.transform.localScale;
+            bull.SetActive(true);
+            bull.GetComponent<Rigidbody2D>().velocity = new Vector2(4f * gameObject.transform.localScale.x, 0);
+            yield return new WaitForSeconds(.3f);
         }
-        
-    }
+        isFiring = false;
 
+    }
     private void MyInputChangedHandle(InputAction.CallbackContext ctx)
     {
         if(ctx.action.name == "Move")

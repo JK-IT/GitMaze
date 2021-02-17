@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class WaitingRoomScript : MonoBehaviour
 {
@@ -10,11 +11,13 @@ public class WaitingRoomScript : MonoBehaviour
     [SerializeField]
     private Button button;
     private KgameMan gaman;
-
+    
 
     void Awake()
     {
         gaman = GameObject.FindObjectOfType<KgameMan>();
+        TMP_Text title = GameObject.Find("Title").GetComponent<TMP_Text>();
+        title.text += (PlayerPrefs.GetString("playername") + "!!!");
     }
 
     void Start()

@@ -197,7 +197,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnSpot: {fileID: 194919939}
-  foScript: {fileID: 0}
+  objectdatalist:
+  - tag: bullet
+    model: {fileID: 5436781463139398362, guid: 3d6e46dfab915f74babf0b296457a553, type: 3}
+    amount: 10
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,7 +240,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7d557a981c8824fbb1f22b289f44d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -3830,7 +3832,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2039350897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3844,7 +3846,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 200
-  bullet: {fileID: 7397805534453151693, guid: 7a81ffa08fd87fa4ca43bb51b7a93332, type: 3}
 --- !u!95 &2039350898
 Animator:
   serializedVersion: 3

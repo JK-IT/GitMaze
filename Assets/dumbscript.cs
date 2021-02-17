@@ -7,7 +7,6 @@ public class dumbscript : MonoBehaviour
     // Start is called before the first frame update
 
     public float health = 200f;
-    public GameObject bullet;
     Animator animator;
     Animation anim;
 
@@ -27,11 +26,15 @@ public class dumbscript : MonoBehaviour
     {
         while (true)
         {
+            Debug.Log("fire fire");
             Vector2 bullpos = new Vector2(gameObject.transform.position.x + 1f, gameObject.transform.position.y);
-            GameObject bull = Instantiate(bullet, bullpos, Quaternion.identity) as GameObject;
+            GameObject bull = ObjectsPool.GetObject("bullet");
+            
+            bull.transform.position = bullpos;
             bull.transform.localScale = gameObject.transform.localScale;
+            bull.SetActive(true);
             bull.GetComponent<Rigidbody2D>().velocity = new Vector2(4f * gameObject.transform.localScale.x, 0);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

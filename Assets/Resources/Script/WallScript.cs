@@ -19,6 +19,7 @@ public class WallScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        Destroy(collision.gameObject);
+        //Destroy(collision.gameObject);
+        ObjectsPool.PutAwayObject(collision.gameObject.tag, collision.gameObject);
     }
 }

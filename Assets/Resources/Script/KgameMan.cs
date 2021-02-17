@@ -22,7 +22,7 @@ using System.Threading;
 public class KgameMan : MonoBehaviour
 {
     private LocalGameData localdat = null;
-    static Dictionary<string, GameObject> charpool = new Dictionary<string, GameObject>();
+    private static Dictionary<string, GameObject> charpool = new Dictionary<string, GameObject>();
     string savedpath;
 
     private Thread bgthread;
@@ -68,8 +68,8 @@ public class KgameMan : MonoBehaviour
             DontDestroyOnLoad(_ins);
         }
 
-        Debug.Log("Awake is called " + Time.time);
-        Debug.Log(charpool["Wraith01"]);
+//        Debug.Log("Awake is called " + Time.time);
+//        Debug.Log(charpool["Wraith01"]);
         savedpath = Path.Combine(Application.dataPath, "Resources/kgame.kd");
         bgthread = new Thread(StartupLoad);
         bgthread.Start();
@@ -91,6 +91,7 @@ public class KgameMan : MonoBehaviour
     private void OnApplicationQuit()
     {
         bgthread.Abort();
+        Debug.Log("application quit");
         SaveDat();
     }
 
